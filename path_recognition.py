@@ -1,34 +1,6 @@
 #!/usr/bin/env python
 
-import matplotlib.pyplot as plt
-import numpy as np
-import sympy as sp
-import math
-
-from math import pi, cos, sin
-from mpl_toolkits.mplot3d import Axes3D
-
-# Performs matrix multiplication to transform vector
-def transform(T: np.array, v: np.array) -> np.array:
-    v = np.vstack((v, [1]))
-    v_trans = T @ v 
-    return np.round(v_trans[:3], decimals=2)    
-
-# Returns line equations in symbolic form
-def get_line(p1: np.array, p2: np.array):
-    dx = p2[0] - p1[0]
-    dy = p2[1] - p1[1]
-    
-    if dx == 0:
-        return sp.Eq(x, p1[0])
-    
-    m = dy / dx
-    k = p1[1] - m * p1[0]
-    return sp.simplify(m * x + k)
-
-# Linear interpolation between two points
-def get_line_points(p1, p2, num=100):
-    return np.linspace(p1, p2, num=num).T
+from arv_lib import *
 
 if __name__ == "__main__":
 
